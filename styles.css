@@ -1,0 +1,981 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero-section {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: #0a0a0a url('mandala-pattern.svg') repeat;
+    background-size: 400px 400px;
+    animation: mandalaMove 120s linear infinite;
+}
+
+/* Subtle overlay for depth */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(10, 10, 10, 0.3) 70%, rgba(10, 10, 10, 0.6) 100%);
+    z-index: 2;
+}
+
+/* Mandala movement animation */
+@keyframes mandalaMove {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 400px 400px;
+    }
+}
+
+/* WebGL Background Canvas - Hidden */
+.webgl-background {
+    display: none;
+}
+
+/* Pause Indicator */
+.pause-indicator {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 200ms ease-in-out;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+
+
+/* Hero content container */
+.hero-content {
+    text-align: center;
+    z-index: 20;
+    max-width: 1400px;
+    padding: 0 40px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    gap: 0.5rem;
+}
+
+/* Add subtle backdrop for text readability */
+.hero-content::before {
+    content: '';
+    position: absolute;
+    top: -2rem;
+    left: -2rem;
+    right: -2rem;
+    bottom: 60%;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0%, transparent 70%);
+    border-radius: 20px;
+    z-index: -1;
+    backdrop-filter: blur(5px);
+}
+
+/* Hero Text Block */
+.hero-text-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* Brand Label */
+.brand-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #A0A0A0;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 16px;
+    animation: fadeInUp 1s ease-out 0.1s both;
+}
+
+/* Main Heading */
+.main-heading {
+    font-size: clamp(36px, 8vw, 60px);
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 0%, #8e44ad 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+    animation: fadeInUp 1s ease-out 0.2s both;
+}
+
+/* Sub Heading */
+.sub-heading {
+    font-size: clamp(16px, 3vw, 18px);
+    font-weight: 400;
+    color: #CFCFCF;
+    line-height: 1.5;
+    max-width: 600px;
+    margin: 12px auto 24px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+/* Explore Collection Button Container */
+.explore-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+/* Enhanced Explore Collection Button */
+.explore-collection-btn {
+    background: linear-gradient(135deg, #7F5AF0, #2CB67D);
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(127, 90, 240, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.explore-collection-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(127, 90, 240, 0.4);
+}
+
+/* Button Icon */
+.btn-icon {
+    font-size: 16px;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.explore-collection-btn:hover .btn-icon {
+    transform: translateX(4px);
+}
+
+
+
+/* Shoe Scroll Track */
+.shoe-scroll-track {
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+/* Shoe Carousel */
+.shoe-carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 500px;
+    width: 100%;
+    margin: 0 auto;
+    overflow: visible;
+    transform: translateX(var(--carousel-offset, 0px));
+    transition: transform 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Subtle background glow */
+.shoe-carousel::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 300px;
+    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(40px);
+    opacity: 0.8;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Shoe container styles */
+.shoe-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 220px;
+    height: 300px;
+    border-radius: 24px;
+    margin: 0 20px;
+    flex-shrink: 0;
+    overflow: visible;
+    perspective: 1000px;
+}
+
+/* Base shoe image styles */
+.shoe-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 24px;
+    transition: all 800ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+}
+
+/* Center shoe enhanced styling with beautiful shadow */
+.shoe-container.center-shoe {
+    transform: scale(1.2) translateY(-15px) !important;
+    z-index: 10 !important;
+    box-shadow:
+        0 35px 70px rgba(0, 0, 0, 0.4),
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 10px 20px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1) !important;
+}
+
+.shoe-container.center-shoe .shoe-image {
+    filter: brightness(1.15) contrast(1.08) saturate(1.1);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.35),
+        0 15px 30px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Add beautiful glow and shadow behind center shoe */
+.shoe-container.center-shoe::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    right: -40px;
+    bottom: -20px;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 40%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 1;
+    transition: all 600ms ease;
+}
+
+/* Add ground shadow beneath selected shoe */
+.shoe-container.center-shoe::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 180px;
+    height: 40px;
+    background: radial-gradient(ellipse, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.2) 40%, transparent 70%);
+    border-radius: 50%;
+    filter: blur(15px);
+    z-index: -2;
+    transition: all 600ms ease;
+}
+
+/* Smooth scale animation for center shoe */
+@keyframes smoothScale {
+    0% {
+        transform: scale(1) translateY(0px);
+    }
+    100% {
+        transform: scale(1.2) translateY(-10px);
+    }
+}
+
+/* Disable interactions for non-center shoes */
+.shoe-container:not(.center-shoe) {
+    pointer-events: none;
+    cursor: default;
+}
+
+.shoe-container:not(.center-shoe) .shoe-image {
+    cursor: default;
+}
+
+/* Card Styling - All Same Size by Default */
+.shoe1 {
+    background: #333333;
+    box-shadow: 0 10px 25px rgba(51, 51, 51, 0.2);
+    transform: scale(1) translateY(0px);
+    z-index: 2;
+    transition: all 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.shoe2 {
+    background: #e66ba1;
+    box-shadow: 0 10px 25px rgba(230, 107, 161, 0.2);
+    transform: scale(1) translateY(0px);
+    z-index: 2;
+    transition: all 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.shoe3 {
+    background: #ffffff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: scale(1) translateY(0px);
+    z-index: 2;
+    transition: all 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.shoe4 {
+    background: #9beb58;
+    box-shadow: 0 10px 25px rgba(155, 235, 88, 0.2);
+    transform: scale(1) translateY(0px);
+    z-index: 2;
+    transition: all 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.shoe5 {
+    background: #c9a3e5;
+    box-shadow: 0 10px 25px rgba(201, 163, 229, 0.2);
+    transform: scale(1) translateY(0px);
+    z-index: 2;
+    transition: all 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.shoe3 .shoe-image {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Center shoe spotlight effect */
+.shoe3::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    left: -100px;
+    right: -100px;
+    bottom: -100px;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.04) 40%, transparent 70%);
+    border-radius: 50%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Center shoe oval shadow */
+.shoe3::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    filter: blur(20px);
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Center shoe oval shadow for all center shoes */
+.shoe-container.center-shoe::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+    filter: blur(20px);
+    z-index: -1;
+    pointer-events: none;
+    transition: all 400ms ease-in-out;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .shoe-carousel {
+        overflow-x: auto;
+        overflow-y: visible;
+        gap: 20px;
+        padding: 0 20px;
+        justify-content: flex-start;
+    }
+
+    .shoe-container {
+        width: 180px;
+        flex-shrink: 0;
+    }
+
+    .shoe1, .shoe2, .shoe3, .shoe4, .shoe5 {
+        --y: 0px;
+        --scale: 1;
+        --z-index: 1;
+    }
+}
+
+/* Center shoe styling */
+.shoe-container.center-shoe .shoe-image {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+
+.shoe-container.center-shoe {
+    pointer-events: all;
+}
+
+/* Shop Now button */
+.shop-now-btn {
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(20px);
+    box-shadow:
+        0 8px 32px rgba(102, 126, 234, 0.3),
+        0 4px 16px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    white-space: nowrap;
+    z-index: 15;
+    cursor: pointer;
+}
+
+.shop-now-btn:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow:
+        0 12px 40px rgba(102, 126, 234, 0.4),
+        0 6px 20px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Frame 1 - Shoe1 center */
+.shoe-carousel[data-frame="1"] .shoe1 {
+    --x: 0px;
+    --scale: 1.2;
+    --opacity: 1.0;
+    --z-index: 5;
+}
+
+.shoe-carousel[data-frame="1"] .shoe2 {
+    --x: 160px;
+    --scale: 0.85;
+    --opacity: 0.85;
+    --z-index: 2;
+}
+
+.shoe-carousel[data-frame="1"] .shoe3 {
+    --x: 320px;
+    --scale: 0.7;
+    --opacity: 0.7;
+    --z-index: 1;
+}
+
+.shoe-carousel[data-frame="1"] .shoe4 {
+    --x: 480px;
+    --scale: 0.6;
+    --opacity: 0.5;
+    --z-index: 0;
+}
+
+.shoe-carousel[data-frame="1"] .shoe5 {
+    --x: 640px;
+    --scale: 0.6;
+    --opacity: 0.3;
+    --z-index: 0;
+}
+
+/* Frame 2 - Shoe2 center */
+.shoe-carousel[data-frame="2"] .shoe1 {
+    --x: -160px;
+    --scale: 0.85;
+    --opacity: 0.85;
+    --z-index: 2;
+}
+
+.shoe-carousel[data-frame="2"] .shoe2 {
+    --x: 0px;
+    --scale: 1.2;
+    --opacity: 1.0;
+    --z-index: 5;
+}
+
+.shoe-carousel[data-frame="2"] .shoe3 {
+    --x: 160px;
+    --scale: 0.85;
+    --opacity: 0.85;
+    --z-index: 2;
+}
+
+.shoe-carousel[data-frame="2"] .shoe4 {
+    --x: 320px;
+    --scale: 0.7;
+    --opacity: 0.7;
+    --z-index: 1;
+}
+
+.shoe-carousel[data-frame="2"] .shoe5 {
+    --x: 480px;
+    --scale: 0.6;
+    --opacity: 0.5;
+    --z-index: 0;
+}
+
+/* Frame 3 - Shoe3 center */
+.shoe-carousel[data-frame="3"] .shoe1 {
+    --x: -320px;
+    --scale: 0.7;
+    --opacity: 0.7;
+    --z-index: 1;
+}
+
+.shoe-carousel[data-frame="3"] .shoe2 {
+    --x: -160px;
+    --scale: 0.85;
+    --opacity: 0.85;
+    --z-index: 2;
+}
+
+.shoe-carousel[data-frame="3"] .shoe3 {
+    --x: 0px;
+    --scale: 1.2;
+    --opacity: 1.0;
+    --z-index: 5;
+}
+
+.shoe-carousel[data-frame="3"] .shoe4 {
+    --x: 160px;
+    --scale: 0.85;
+    --opacity: 0.85;
+    --z-index: 2;
+}
+
+.shoe-carousel[data-frame="3"] .shoe5 {
+    --x: 320px;
+    --scale: 0.7;
+    --opacity: 0.7;
+    --z-index: 1;
+}
+
+/* Frame 4 - Shoe4 center */
+.shoe-carousel[data-frame="4"] .shoe1 {
+    --x: -480px;
+    --scale: 0.6;
+    --opacity: 0.5;
+    --z-index: 0;
+}
+
+.shoe-carousel[data-frame="4"] .shoe2 {
+    --x: -320px;
+    --scale: 0.7;
+    --opacity: 0.7;
+    --z-index: 1;
+}
+
+.shoe-carousel[data-frame="4"] .shoe3 {
+    --x: -160px;
+    --scale: 0.85;
+    --opacity: 0.85;
+    --z-index: 2;
+}
+
+.shoe-carousel[data-frame="4"] .shoe4 {
+    --x: 0px;
+    --scale: 1.2;
+    --opacity: 1.0;
+    --z-index: 5;
+}
+
+.shoe-carousel[data-frame="4"] .shoe5 {
+    --x: 160px;
+    --scale: 0.85;
+    --opacity: 0.85;
+    --z-index: 2;
+}
+
+/* Frame 5 - Shoe5 center */
+.shoe-carousel[data-frame="5"] .shoe1 {
+    --x: -640px;
+    --scale: 0.6;
+    --opacity: 0.3;
+    --z-index: 0;
+}
+
+.shoe-carousel[data-frame="5"] .shoe2 {
+    --x: -480px;
+    --scale: 0.6;
+    --opacity: 0.5;
+    --z-index: 0;
+}
+
+.shoe-carousel[data-frame="5"] .shoe3 {
+    --x: -320px;
+    --scale: 0.7;
+    --opacity: 0.7;
+    --z-index: 1;
+}
+
+.shoe-carousel[data-frame="5"] .shoe4 {
+    --x: -160px;
+    --scale: 0.85;
+    --opacity: 0.85;
+    --z-index: 2;
+}
+
+.shoe-carousel[data-frame="5"] .shoe5 {
+    --x: 0px;
+    --scale: 1.2;
+    --opacity: 1.0;
+    --z-index: 5;
+}
+
+/* Scroll Controls */
+.scroll-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 4rem;
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.scroll-btn {
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.4rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(15px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.scroll-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: scale(1);
+}
+
+.scroll-indicators {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 255, 0.6);
+}
+
+/* Hover effects for center shoes only */
+.shoe-container.center-shoe:hover {
+    transform: translateX(var(--x, 0px)) translateY(var(--y, 0px)) rotateY(var(--rotate-y, 0deg)) translateY(-15px);
+}
+
+.shoe-container.center-shoe:hover .shoe-image {
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+}
+
+.shoe-container.center-shoe:hover .shop-now-btn {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-15px);
+    animation: buttonPulse 1.5s ease-in-out infinite;
+}
+
+/* Button pulse animation */
+@keyframes buttonPulse {
+    0%, 100% {
+        box-shadow:
+            0 8px 32px rgba(102, 126, 234, 0.3),
+            0 4px 16px rgba(0, 0, 0, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        box-shadow:
+            0 12px 40px rgba(102, 126, 234, 0.5),
+            0 6px 20px rgba(0, 0, 0, 0.3),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* Hero call-to-action button */
+.hero-cta {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 1.2rem 3rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+    animation: fadeInUp 1s ease-out 0.9s both;
+    margin-top: 1rem;
+}
+
+.hero-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.hero-cta:active {
+    transform: translateY(0);
+}
+
+/* Fade in up animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero-content {
+        padding: 0 15px;
+        max-width: 90vw;
+    }
+
+    .shoe-scroll-track {
+        margin: 1.5rem 0;
+    }
+
+    .shoe-carousel {
+        height: 280px;
+    }
+
+    .shoe-image {
+        width: 240px;
+        height: 180px;
+    }
+
+    .shoe3 .shoe-image {
+        width: 280px;
+        height: 210px;
+    }
+
+    .shop-now-btn {
+        font-size: 1rem;
+        padding: 12px 24px;
+        bottom: -40px;
+        border-radius: 25px;
+    }
+
+    /* Adjust frame positions for tablet */
+    .shoe-carousel[data-frame="1"] .shoe1 { --scale: 1.0; }
+    .shoe-carousel[data-frame="1"] .shoe2 { --x: 120px; --scale: 0.8; }
+    .shoe-carousel[data-frame="1"] .shoe3 { --x: 240px; --scale: 0.65; }
+    .shoe-carousel[data-frame="1"] .shoe4 { --x: 360px; --scale: 0.6; }
+    .shoe-carousel[data-frame="1"] .shoe5 { --x: 480px; --scale: 0.6; }
+
+    .shoe-carousel[data-frame="2"] .shoe1 { --x: -120px; --scale: 0.8; }
+    .shoe-carousel[data-frame="2"] .shoe2 { --scale: 1.0; }
+    .shoe-carousel[data-frame="2"] .shoe3 { --x: 120px; --scale: 0.8; }
+    .shoe-carousel[data-frame="2"] .shoe4 { --x: 240px; --scale: 0.65; }
+    .shoe-carousel[data-frame="2"] .shoe5 { --x: 360px; --scale: 0.6; }
+
+    .shoe-carousel[data-frame="3"] .shoe1 { --x: -240px; --scale: 0.65; }
+    .shoe-carousel[data-frame="3"] .shoe2 { --x: -120px; --scale: 0.8; }
+    .shoe-carousel[data-frame="3"] .shoe3 { --scale: 1.0; }
+    .shoe-carousel[data-frame="3"] .shoe4 { --x: 120px; --scale: 0.8; }
+    .shoe-carousel[data-frame="3"] .shoe5 { --x: 240px; --scale: 0.65; }
+
+    .shoe-carousel[data-frame="4"] .shoe1 { --x: -360px; --scale: 0.6; }
+    .shoe-carousel[data-frame="4"] .shoe2 { --x: -240px; --scale: 0.65; }
+    .shoe-carousel[data-frame="4"] .shoe3 { --x: -120px; --scale: 0.8; }
+    .shoe-carousel[data-frame="4"] .shoe4 { --scale: 1.0; }
+    .shoe-carousel[data-frame="4"] .shoe5 { --x: 120px; --scale: 0.8; }
+
+    .shoe-carousel[data-frame="5"] .shoe1 { --x: -480px; --scale: 0.6; }
+    .shoe-carousel[data-frame="5"] .shoe2 { --x: -360px; --scale: 0.6; }
+    .shoe-carousel[data-frame="5"] .shoe3 { --x: -240px; --scale: 0.65; }
+    .shoe-carousel[data-frame="5"] .shoe4 { --x: -120px; --scale: 0.8; }
+    .shoe-carousel[data-frame="5"] .shoe5 { --scale: 1.0; }
+
+    .hero-cta {
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content {
+        padding: 0 20px;
+        gap: 0.3rem;
+    }
+
+    .hero-title {
+        margin-bottom: 0.2rem;
+        font-size: clamp(1.5rem, 5vw, 2rem);
+    }
+
+    .hero-subtitle {
+        margin-bottom: 0.3rem;
+        font-size: clamp(0.8rem, 2vw, 1rem);
+    }
+
+    .hero-subtitle::after {
+        width: 40px;
+        margin-top: 0.4rem;
+    }
+}
+
+    .shoe-scroll-track {
+        margin: 1rem 0;
+    }
+
+    .shoe-carousel {
+        height: 200px;
+    }
+
+    .shoe-image {
+        width: 200px;
+        height: 150px;
+    }
+
+    .shoe3 .shoe-image {
+        width: 240px;
+        height: 180px;
+    }
+
+    .shop-now-btn {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+        bottom: -35px;
+        border-radius: 20px;
+        letter-spacing: 0.3px;
+    }
+
+    /* Adjust frame positions for mobile */
+    .shoe-carousel[data-frame="1"] .shoe1 { --scale: 0.9; }
+    .shoe-carousel[data-frame="1"] .shoe2 { --x: 80px; --scale: 0.75; }
+    .shoe-carousel[data-frame="1"] .shoe3 { --x: 160px; --scale: 0.6; }
+    .shoe-carousel[data-frame="1"] .shoe4 { --x: 240px; --scale: 0.5; }
+    .shoe-carousel[data-frame="1"] .shoe5 { --x: 320px; --scale: 0.5; }
+
+    .shoe-carousel[data-frame="2"] .shoe1 { --x: -80px; --scale: 0.75; }
+    .shoe-carousel[data-frame="2"] .shoe2 { --scale: 0.9; }
+    .shoe-carousel[data-frame="2"] .shoe3 { --x: 80px; --scale: 0.75; }
+    .shoe-carousel[data-frame="2"] .shoe4 { --x: 160px; --scale: 0.6; }
+    .shoe-carousel[data-frame="2"] .shoe5 { --x: 240px; --scale: 0.5; }
+
+    .shoe-carousel[data-frame="3"] .shoe1 { --x: -160px; --scale: 0.6; }
+    .shoe-carousel[data-frame="3"] .shoe2 { --x: -80px; --scale: 0.75; }
+    .shoe-carousel[data-frame="3"] .shoe3 { --scale: 0.9; }
+    .shoe-carousel[data-frame="3"] .shoe4 { --x: 80px; --scale: 0.75; }
+    .shoe-carousel[data-frame="3"] .shoe5 { --x: 160px; --scale: 0.6; }
+
+    .shoe-carousel[data-frame="4"] .shoe1 { --x: -240px; --scale: 0.5; }
+    .shoe-carousel[data-frame="4"] .shoe2 { --x: -160px; --scale: 0.6; }
+    .shoe-carousel[data-frame="4"] .shoe3 { --x: -80px; --scale: 0.75; }
+    .shoe-carousel[data-frame="4"] .shoe4 { --scale: 0.9; }
+    .shoe-carousel[data-frame="4"] .shoe5 { --x: 80px; --scale: 0.75; }
+
+    .shoe-carousel[data-frame="5"] .shoe1 { --x: -320px; --scale: 0.5; }
+    .shoe-carousel[data-frame="5"] .shoe2 { --x: -240px; --scale: 0.5; }
+    .shoe-carousel[data-frame="5"] .shoe3 { --x: -160px; --scale: 0.6; }
+    .shoe-carousel[data-frame="5"] .shoe4 { --x: -80px; --scale: 0.75; }
+    .shoe-carousel[data-frame="5"] .shoe5 { --scale: 0.9; }
+
+    .scroll-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+
+    .indicator {
+        width: 10px;
+        height: 10px;
+    }
+
+    .hero-cta {
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+}

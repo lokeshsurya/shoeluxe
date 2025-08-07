@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reebok - Shoeluxe</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/87/three.min.js"></script>
+</head>
+<body>
+    <section class="hero-section">
+        <canvas class="webgl-background" id="webgl-scene"></canvas>
+        <div class="hero-content">
+            <!-- Hero Text Block -->
+            <div class="hero-text-block">
+                <div class="brand-label">REEBOK COLLECTION</div>
+                <h1 class="main-heading">Be More Human</h1>
+                <p class="sub-heading">Discover premium Reebok sneakers that celebrate human movement.</p>
+            </div>
+
+            <!-- Shoe Scroll Track -->
+            <div class="shoe-scroll-track">
+                <div class="shoe-carousel" id="shoeCarousel" data-frame="1">
+                    <div class="shoe-container shoe1">
+                        <img src="images/AIR+MAX+TL+2.5-removebg-preview.png" alt="Reebok Classic Leather" class="shoe-image" id="shoe1">
+                        <button class="shop-now-btn">Shop Now</button>
+                    </div>
+                    <div class="shoe-container shoe2">
+                        <img src="images/A_ONE+EP-removebg-preview.png" alt="Reebok Club C 85" class="shoe-image" id="shoe2">
+                        <button class="shop-now-btn">Shop Now</button>
+                    </div>
+                    <div class="shoe-container shoe3 center-shoe">
+                        <img src="images/NIKE+CORTEZ+TXT-removebg-preview.png" alt="Reebok Nano X1" class="shoe-image" id="shoe3">
+                        <button class="shop-now-btn">Shop Now</button>
+                    </div>
+                    <div class="shoe-container shoe4">
+                        <img src="images/NIKE+FIELD+GENERAL-removebg-preview.png" alt="Reebok Zig Kinetica" class="shoe-image" id="shoe4">
+                        <button class="shop-now-btn">Shop Now</button>
+                    </div>
+                    <div class="shoe-container shoe5">
+                        <img src="images/WMNS+NIKE+FIELD+GENERAL-removebg-preview.png" alt="Reebok InstaPump Fury" class="shoe-image" id="shoe5">
+                        <button class="shop-now-btn">Shop Now</button>
+                    </div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="scroll-controls">
+                    <button class="scroll-btn prev-btn" id="prevBtn">‹</button>
+                    <div class="scroll-indicators">
+                        <span class="indicator active" data-frame="1"></span>
+                        <span class="indicator" data-frame="2"></span>
+                        <span class="indicator" data-frame="3"></span>
+                        <span class="indicator" data-frame="4"></span>
+                        <span class="indicator" data-frame="5"></span>
+                    </div>
+                    <button class="scroll-btn next-btn" id="nextBtn">›</button>
+                </div>
+            </div>
+
+            <!-- Explore Collection Button -->
+            <div class="explore-button-container">
+                <button class="explore-collection-btn" onclick="window.location.href='index.html'">
+                    Back to Brands
+                    <span class="btn-icon">←</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <script src="carousel.js"></script>
+    <script src="webgl-background.js"></script>
+</body>
+</html>

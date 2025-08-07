@@ -1,8 +1,8 @@
-// Shoe Carousel Controller
-class ShoeCarousel {
+// Brand Carousel Controller
+class BrandCarousel {
     constructor() {
-        this.currentFrame = 3; // Start with middle shoe (shoe3) selected
-        this.totalFrames = 5; // We have 5 shoes, so 5 frames
+        this.currentFrame = 3; // Start with middle brand (brand3) selected
+        this.totalFrames = 5; // We have 5 brands, so 5 frames
         this.isAnimating = false;
         this.autoScrollPaused = true; // Keep auto-scroll permanently disabled
         this.userInteractionTimeout = null;
@@ -14,7 +14,7 @@ class ShoeCarousel {
         this.indicators = document.querySelectorAll('.indicator');
 
         // Debug: Check if elements are found
-        console.log('Carousel elements:', {
+        console.log('Brand Carousel elements:', {
             carousel: this.carousel,
             prevBtn: this.prevBtn,
             nextBtn: this.nextBtn,
@@ -26,7 +26,7 @@ class ShoeCarousel {
     }
     
     init() {
-        // Set initial frame to middle shoe (frame 3)
+        // Set initial frame to middle brand (frame 3)
         this.setFrame(3);
         
         // Enable navigation buttons with better mobile support
@@ -50,7 +50,7 @@ class ShoeCarousel {
             e.preventDefault();
             this.nextFrame();
         });
-        
+
         // Enable indicator clicks with better mobile support
         this.indicators.forEach((indicator, index) => {
             indicator.addEventListener('click', (e) => {
@@ -81,14 +81,11 @@ class ShoeCarousel {
             }, 100);
         });
 
-        // Add Shop Now button handlers
-        this.addShopNowHandlers();
+        // Add Brand button handlers
+        this.addBrandHandlers();
 
-        // Set initial frame to middle shoe (frame 3)
+        // Set initial frame to middle brand (frame 3)
         this.setFrame(3);
-
-        // Auto-scroll disabled - keep static layout
-        // this.startAutoScroll();
     }
     
     setFrame(frameNumber) {
@@ -109,8 +106,8 @@ class ShoeCarousel {
         // Update carousel data attribute
         this.carousel.setAttribute('data-frame', frameNumber);
 
-        // Update center shoe class
-        this.updateCenterShoe(frameNumber);
+        // Update center brand class
+        this.updateCenterBrand(frameNumber);
 
         // Update indicators
         this.updateIndicators();
@@ -127,7 +124,7 @@ class ShoeCarousel {
     getCardSpacing() {
         // Get responsive card spacing based on screen width
         const screenWidth = window.innerWidth;
-
+        
         if (screenWidth <= 360) {
             // Extra small mobile: 120px card + 12px margin = 132px spacing
             return 132;
@@ -143,110 +140,61 @@ class ShoeCarousel {
         }
     }
 
-    updateCenterShoe(frameNumber) {
-        // Remove center-shoe class from all shoes
-        const allShoes = this.carousel.querySelectorAll('.shoe-container');
-        allShoes.forEach(shoe => {
-            shoe.classList.remove('center-shoe');
+    updateCenterBrand(frameNumber) {
+        // Remove center-shoe class from all brands
+        const allBrands = this.carousel.querySelectorAll('.shoe-container');
+        allBrands.forEach(brand => {
+            brand.classList.remove('center-shoe');
         });
 
-        // Add center-shoe class to the appropriate shoe based on frame
-        let centerShoeClass;
+        // Add center-shoe class to the appropriate brand based on frame
+        let centerBrandClass;
         switch(frameNumber) {
             case 1:
-                centerShoeClass = '.shoe1';  // Shoe1 is center
+                centerBrandClass = '.shoe1';  // Brand1 is center
                 break;
             case 2:
-                centerShoeClass = '.shoe2';  // Shoe2 is center
+                centerBrandClass = '.shoe2';  // Brand2 is center
                 break;
             case 3:
-                centerShoeClass = '.shoe3';  // Shoe3 is center
+                centerBrandClass = '.shoe3';  // Brand3 is center
                 break;
             case 4:
-                centerShoeClass = '.shoe4';  // Shoe4 is center
+                centerBrandClass = '.shoe4';  // Brand4 is center
                 break;
             case 5:
-                centerShoeClass = '.shoe5';  // Shoe5 is center
+                centerBrandClass = '.shoe5';  // Brand5 is center
                 break;
             default:
-                centerShoeClass = '.shoe3';
+                centerBrandClass = '.shoe3';
         }
 
         // Add center-shoe class with smooth transition
         setTimeout(() => {
-            const centerShoe = this.carousel.querySelector(centerShoeClass);
-            if (centerShoe) {
-                centerShoe.classList.add('center-shoe');
-                console.log(`Center shoe updated to ${centerShoeClass} with smooth scaling`);
+            const centerBrand = this.carousel.querySelector(centerBrandClass);
+            if (centerBrand) {
+                centerBrand.classList.add('center-shoe');
+                console.log(`Center brand updated to ${centerBrandClass} with smooth scaling`);
             }
         }, 200); // Small delay for smooth transition
     }
 
-    addShopNowHandlers() {
-        const shopNowButtons = this.carousel.querySelectorAll('.shop-now-btn');
-        shopNowButtons.forEach((button, index) => {
-            button.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const shoeNumber = index + 1;
-                this.handleShopNowClick(shoeNumber);
+    addBrandHandlers() {
+        const brandCards = this.carousel.querySelectorAll('.brand-card');
+        brandCards.forEach((card, index) => {
+            card.addEventListener('click', (e) => {
+                // Only handle click if this is the center card
+                if (card.classList.contains('center-shoe')) {
+                    console.log(`Brand ${index + 1} clicked`);
+                    // The onclick handlers in HTML will handle navigation
+                } else {
+                    // If not center, make it center
+                    e.preventDefault();
+                    this.goToFrame(index + 1);
+                }
             });
         });
     }
-
-    handleShopNowClick(shoeNumber) {
-        // Handle Shop Now button click
-        console.log(`Shop Now clicked for Shoe ${shoeNumber}`);
-        // Add your shop now logic here
-        // For example: window.location.href = `/shop/shoe-${shoeNumber}`;
-        alert(`Shopping for Shoe ${shoeNumber}!`);
-    }
-
-    handleButtonClick() {
-        // Pause auto-scroll when user clicks navigation buttons
-        this.autoScrollPaused = true;
-        this.stopAutoScroll();
-
-        // Clear any existing timeout
-        if (this.userInteractionTimeout) {
-            clearTimeout(this.userInteractionTimeout);
-        }
-
-        // Show pause indicator
-        this.showPauseIndicator();
-
-        // Resume auto-scroll after 3 seconds of no button clicks
-        this.userInteractionTimeout = setTimeout(() => {
-            this.autoScrollPaused = false;
-            this.startAutoScroll();
-            this.hidePauseIndicator();
-            console.log('Auto-scroll resumed after button click pause');
-        }, 3000);
-
-        console.log('Auto-scroll paused due to button click');
-    }
-
-    showPauseIndicator() {
-        // Create or show pause indicator
-        let indicator = document.querySelector('.pause-indicator');
-        if (!indicator) {
-            indicator = document.createElement('div');
-            indicator.className = 'pause-indicator';
-            indicator.innerHTML = '⏸️ Navigation paused';
-            document.querySelector('.hero-section').appendChild(indicator);
-        }
-        indicator.style.opacity = '1';
-        indicator.style.visibility = 'visible';
-    }
-
-    hidePauseIndicator() {
-        const indicator = document.querySelector('.pause-indicator');
-        if (indicator) {
-            indicator.style.opacity = '0';
-            indicator.style.visibility = 'hidden';
-        }
-    }
-
-
 
     updateIndicators() {
         this.indicators.forEach((indicator, index) => {
@@ -290,59 +238,18 @@ class ShoeCarousel {
             this.setFrame(frameNumber);
         }
     }
-    
-    startAutoScroll() {
-        // Don't start if already paused by user interaction
-        if (this.autoScrollPaused) {
-            return;
-        }
-
-        // Stop any existing interval
-        this.stopAutoScroll();
-
-        // Auto-scroll every 2.5 seconds (faster)
-        this.autoScrollInterval = setInterval(() => {
-            // Only auto-scroll if not paused by user interaction
-            if (!this.autoScrollPaused) {
-                this.nextFrame(); // Use nextFrame which handles cycling automatically
-            }
-        }, 2500);
-        
-        // Pause auto-scroll on hover
-        this.carousel.addEventListener('mouseenter', () => {
-            clearInterval(this.autoScrollInterval);
-        });
-        
-        // Resume auto-scroll when mouse leaves
-        this.carousel.addEventListener('mouseleave', () => {
-            this.startAutoScroll();
-        });
-    }
-    
-    // Public method to stop auto-scroll
-    stopAutoScroll() {
-        if (this.autoScrollInterval) {
-            clearInterval(this.autoScrollInterval);
-        }
-    }
-    
-    // Public method to restart auto-scroll
-    restartAutoScroll() {
-        this.stopAutoScroll();
-        this.startAutoScroll();
-    }
 }
 
-// Initialize carousel when DOM is loaded
+// Initialize brand carousel when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    const shoeCarousel = new ShoeCarousel();
+    const brandCarousel = new BrandCarousel();
     
     // Make carousel globally accessible for debugging
-    window.shoeCarousel = shoeCarousel;
+    window.brandCarousel = brandCarousel;
 });
 
 // Add touch/swipe support for mobile
-class TouchHandler {
+class BrandTouchHandler {
     constructor(carousel) {
         this.carousel = carousel;
         this.startX = 0;
@@ -383,8 +290,8 @@ class TouchHandler {
 // Initialize touch handler after carousel is created
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
-        if (window.shoeCarousel) {
-            new TouchHandler(window.shoeCarousel);
+        if (window.brandCarousel) {
+            new BrandTouchHandler(window.brandCarousel);
         }
     }, 100);
 });

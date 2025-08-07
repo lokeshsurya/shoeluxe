@@ -123,7 +123,7 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     animation: fadeInUp 1s ease-out;
     flex-shrink: 0;
     width: 100%;
@@ -161,7 +161,7 @@ body {
     color: #CFCFCF;
     line-height: 1.5;
     max-width: 600px;
-    margin: 12px auto 24px;
+    margin: 12px auto 50px;
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     animation: fadeInUp 1s ease-out 0.3s both;
 }
@@ -219,7 +219,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 0;
+    margin: 30px 0 0 0;
     animation: fadeInUp 1s ease-out 0.6s both;
     min-height: 0;
     overflow: visible;
@@ -270,9 +270,6 @@ body {
     flex-shrink: 0;
     overflow: visible;
     perspective: 1000px;
-    transform: translateX(var(--x, 0px)) translateY(var(--y, 0px)) scale(var(--scale, 1));
-    opacity: var(--opacity, 1);
-    z-index: var(--z-index, 1);
     transition: all 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -548,185 +545,15 @@ body {
         inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
-/* Frame 1 - Shoe1 center */
-.shoe-carousel[data-frame="1"] .shoe1 {
-    --x: 0px;
-    --scale: 1.2;
-    --opacity: 1.0;
-    --z-index: 5;
-}
 
-.shoe-carousel[data-frame="1"] .shoe2 {
-    --x: 160px;
-    --scale: 0.85;
-    --opacity: 0.85;
-    --z-index: 2;
-}
 
-.shoe-carousel[data-frame="1"] .shoe3 {
-    --x: 320px;
-    --scale: 0.7;
-    --opacity: 0.7;
-    --z-index: 1;
-}
 
-.shoe-carousel[data-frame="1"] .shoe4 {
-    --x: 480px;
-    --scale: 0.6;
-    --opacity: 0.5;
-    --z-index: 0;
-}
 
-.shoe-carousel[data-frame="1"] .shoe5 {
-    --x: 640px;
-    --scale: 0.6;
-    --opacity: 0.3;
-    --z-index: 0;
-}
 
-/* Frame 2 - Shoe2 center */
-.shoe-carousel[data-frame="2"] .shoe1 {
-    --x: -160px;
-    --scale: 0.85;
-    --opacity: 0.85;
-    --z-index: 2;
-}
 
-.shoe-carousel[data-frame="2"] .shoe2 {
-    --x: 0px;
-    --scale: 1.2;
-    --opacity: 1.0;
-    --z-index: 5;
-}
 
-.shoe-carousel[data-frame="2"] .shoe3 {
-    --x: 160px;
-    --scale: 0.85;
-    --opacity: 0.85;
-    --z-index: 2;
-}
 
-.shoe-carousel[data-frame="2"] .shoe4 {
-    --x: 320px;
-    --scale: 0.7;
-    --opacity: 0.7;
-    --z-index: 1;
-}
 
-.shoe-carousel[data-frame="2"] .shoe5 {
-    --x: 480px;
-    --scale: 0.6;
-    --opacity: 0.5;
-    --z-index: 0;
-}
-
-/* Frame 3 - Shoe3 center */
-.shoe-carousel[data-frame="3"] .shoe1 {
-    --x: -320px;
-    --scale: 0.7;
-    --opacity: 0.7;
-    --z-index: 1;
-}
-
-.shoe-carousel[data-frame="3"] .shoe2 {
-    --x: -160px;
-    --scale: 0.85;
-    --opacity: 0.85;
-    --z-index: 2;
-}
-
-.shoe-carousel[data-frame="3"] .shoe3 {
-    --x: 0px;
-    --scale: 1.2;
-    --opacity: 1.0;
-    --z-index: 5;
-}
-
-.shoe-carousel[data-frame="3"] .shoe4 {
-    --x: 160px;
-    --scale: 0.85;
-    --opacity: 0.85;
-    --z-index: 2;
-}
-
-.shoe-carousel[data-frame="3"] .shoe5 {
-    --x: 320px;
-    --scale: 0.7;
-    --opacity: 0.7;
-    --z-index: 1;
-}
-
-/* Frame 4 - Shoe4 center */
-.shoe-carousel[data-frame="4"] .shoe1 {
-    --x: -480px;
-    --scale: 0.6;
-    --opacity: 0.5;
-    --z-index: 0;
-}
-
-.shoe-carousel[data-frame="4"] .shoe2 {
-    --x: -320px;
-    --scale: 0.7;
-    --opacity: 0.7;
-    --z-index: 1;
-}
-
-.shoe-carousel[data-frame="4"] .shoe3 {
-    --x: -160px;
-    --scale: 0.85;
-    --opacity: 0.85;
-    --z-index: 2;
-}
-
-.shoe-carousel[data-frame="4"] .shoe4 {
-    --x: 0px;
-    --scale: 1.2;
-    --opacity: 1.0;
-    --z-index: 5;
-}
-
-.shoe-carousel[data-frame="4"] .shoe5 {
-    --x: 160px;
-    --scale: 0.85;
-    --opacity: 0.85;
-    --z-index: 2;
-}
-
-/* Frame 5 - Shoe5 center */
-.shoe-carousel[data-frame="5"] .shoe1 {
-    --x: -640px;
-    --scale: 0.6;
-    --opacity: 0.3;
-    --z-index: 0;
-}
-
-.shoe-carousel[data-frame="5"] .shoe2 {
-    --x: -480px;
-    --scale: 0.6;
-    --opacity: 0.5;
-    --z-index: 0;
-}
-
-.shoe-carousel[data-frame="5"] .shoe3 {
-    --x: -320px;
-    --scale: 0.7;
-    --opacity: 0.7;
-    --z-index: 1;
-}
-
-.shoe-carousel[data-frame="5"] .shoe4 {
-    --x: -160px;
-    --scale: 0.85;
-    --opacity: 0.85;
-    --z-index: 2;
-}
-
-.shoe-carousel[data-frame="5"] .shoe5 {
-    --x: 0px;
-    --scale: 1.2;
-    --opacity: 1.0;
-    --z-index: 5;
-}
 
 /* Scroll Controls */
 .scroll-controls {
@@ -794,6 +621,36 @@ body {
 
 .indicator:hover {
     background: rgba(255, 255, 255, 0.6);
+}
+
+/* Brand Card Styles */
+.brand-card {
+    cursor: pointer;
+    transition: all 400ms ease;
+}
+
+.brand-card:hover {
+    transform: scale(1.05) translateY(-5px);
+}
+
+.brand-logo {
+    object-fit: contain !important;
+    padding: 20px;
+    border-radius: 20px;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+.brand-card .shop-now-btn {
+    background: linear-gradient(135deg, #000000 0%, #333333 100%);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.brand-card:hover .shop-now-btn {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(-15px);
+    background: linear-gradient(135deg, #333333 0%, #000000 100%);
 }
 
 /* Hover effects for center shoes only */
@@ -866,6 +723,70 @@ body {
     }
 }
 
+/* Asics image enhancements to match Nike quality */
+.shoe-image[src*="ASICS"] {
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3)) 
+            drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2))
+            brightness(1.05) 
+            contrast(1.1) 
+            saturate(1.1);
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    padding: 15px;
+    object-fit: contain !important;
+    transform: translateZ(0);
+    transition: all 0.3s ease;
+}
+
+.shoe-image[src*="ASICS"]:hover {
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4)) 
+            drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3))
+            brightness(1.08) 
+            contrast(1.15) 
+            saturate(1.15);
+    transform: translateZ(0) scale(1.02);
+}
+
+/* Enhanced shadow for center Asics shoe */
+.shoe-container.center-shoe .shoe-image[src*="ASICS"] {
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4)) 
+            drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3))
+            brightness(1.1) 
+            contrast(1.2) 
+            saturate(1.2);
+}
+
+/* New Balance image enhancements to match Nike quality */
+.shoe-image[src*="NEW+BALANCE"] {
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3)) 
+            drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2))
+            brightness(1.05) 
+            contrast(1.1) 
+            saturate(1.1);
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    padding: 15px;
+    object-fit: contain !important;
+    transform: translateZ(0);
+    transition: all 0.3s ease;
+}
+
+.shoe-image[src*="NEW+BALANCE"]:hover {
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4)) 
+            drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3))
+            brightness(1.08) 
+            contrast(1.15) 
+            saturate(1.15);
+    transform: translateZ(0) scale(1.02);
+}
+
+/* Enhanced shadow for center New Balance shoe */
+.shoe-container.center-shoe .shoe-image[src*="NEW+BALANCE"] {
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4)) 
+            drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3))
+            brightness(1.1) 
+            contrast(1.2) 
+            saturate(1.2);
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .hero-section {
@@ -885,7 +806,7 @@ body {
     }
 
     .hero-text-block {
-        margin-bottom: 20px;
+        margin-bottom: 30px;
         padding-top: 20px;
         flex-shrink: 0;
     }
@@ -904,13 +825,13 @@ body {
 
     .sub-heading {
         font-size: clamp(14px, 3.5vw, 16px);
-        margin: 10px auto 25px;
+        margin: 10px auto 40px;
         max-width: 90%;
         line-height: 1.4;
     }
 
     .shoe-scroll-track {
-        margin: 0;
+        margin: 20px 0 0 0;
         flex: 1;
         display: flex;
         flex-direction: column;
@@ -969,36 +890,7 @@ body {
         flex-shrink: 0;
     }
 
-    /* Adjust frame positions for tablet */
-    .shoe-carousel[data-frame="1"] .shoe1 { --scale: 1.1; --x: 0px; }
-    .shoe-carousel[data-frame="1"] .shoe2 { --x: 100px; --scale: 0.85; }
-    .shoe-carousel[data-frame="1"] .shoe3 { --x: 200px; --scale: 0.7; }
-    .shoe-carousel[data-frame="1"] .shoe4 { --x: 300px; --scale: 0.6; }
-    .shoe-carousel[data-frame="1"] .shoe5 { --x: 400px; --scale: 0.5; }
 
-    .shoe-carousel[data-frame="2"] .shoe1 { --x: -100px; --scale: 0.85; }
-    .shoe-carousel[data-frame="2"] .shoe2 { --scale: 1.1; --x: 0px; }
-    .shoe-carousel[data-frame="2"] .shoe3 { --x: 100px; --scale: 0.85; }
-    .shoe-carousel[data-frame="2"] .shoe4 { --x: 200px; --scale: 0.7; }
-    .shoe-carousel[data-frame="2"] .shoe5 { --x: 300px; --scale: 0.6; }
-
-    .shoe-carousel[data-frame="3"] .shoe1 { --x: -200px; --scale: 0.7; }
-    .shoe-carousel[data-frame="3"] .shoe2 { --x: -100px; --scale: 0.85; }
-    .shoe-carousel[data-frame="3"] .shoe3 { --scale: 1.1; --x: 0px; }
-    .shoe-carousel[data-frame="3"] .shoe4 { --x: 100px; --scale: 0.85; }
-    .shoe-carousel[data-frame="3"] .shoe5 { --x: 200px; --scale: 0.7; }
-
-    .shoe-carousel[data-frame="4"] .shoe1 { --x: -300px; --scale: 0.6; }
-    .shoe-carousel[data-frame="4"] .shoe2 { --x: -200px; --scale: 0.7; }
-    .shoe-carousel[data-frame="4"] .shoe3 { --x: -100px; --scale: 0.85; }
-    .shoe-carousel[data-frame="4"] .shoe4 { --scale: 1.1; --x: 0px; }
-    .shoe-carousel[data-frame="4"] .shoe5 { --x: 100px; --scale: 0.85; }
-
-    .shoe-carousel[data-frame="5"] .shoe1 { --x: -400px; --scale: 0.5; }
-    .shoe-carousel[data-frame="5"] .shoe2 { --x: -300px; --scale: 0.6; }
-    .shoe-carousel[data-frame="5"] .shoe3 { --x: -200px; --scale: 0.7; }
-    .shoe-carousel[data-frame="5"] .shoe4 { --x: -100px; --scale: 0.85; }
-    .shoe-carousel[data-frame="5"] .shoe5 { --scale: 1.1; --x: 0px; }
 }
 
 /* Extra small screens */
@@ -1012,7 +904,7 @@ body {
 
     .hero-text-block {
         padding-top: 10px;
-        margin-bottom: 12px;
+        margin-bottom: 20px;
     }
 
     .main-heading {
@@ -1022,11 +914,12 @@ body {
 
     .sub-heading {
         font-size: clamp(11px, 2.8vw, 13px);
-        margin: 6px auto 15px;
+        margin: 6px auto 30px;
     }
 
     .shoe-scroll-track {
         min-height: 300px;
+        margin-top: 10px;
     }
 
     .shoe-container {
@@ -1054,31 +947,7 @@ body {
         margin-top: 15px;
     }
 
-    /* Adjust frame positions for extra small screens */
-    .shoe-carousel[data-frame="1"] .shoe2 { --x: 60px; }
-    .shoe-carousel[data-frame="1"] .shoe3 { --x: 120px; }
-    .shoe-carousel[data-frame="1"] .shoe4 { --x: 180px; }
-    .shoe-carousel[data-frame="1"] .shoe5 { --x: 240px; }
 
-    .shoe-carousel[data-frame="2"] .shoe1 { --x: -60px; }
-    .shoe-carousel[data-frame="2"] .shoe3 { --x: 60px; }
-    .shoe-carousel[data-frame="2"] .shoe4 { --x: 120px; }
-    .shoe-carousel[data-frame="2"] .shoe5 { --x: 180px; }
-
-    .shoe-carousel[data-frame="3"] .shoe1 { --x: -120px; }
-    .shoe-carousel[data-frame="3"] .shoe2 { --x: -60px; }
-    .shoe-carousel[data-frame="3"] .shoe4 { --x: 60px; }
-    .shoe-carousel[data-frame="3"] .shoe5 { --x: 120px; }
-
-    .shoe-carousel[data-frame="4"] .shoe1 { --x: -180px; }
-    .shoe-carousel[data-frame="4"] .shoe2 { --x: -120px; }
-    .shoe-carousel[data-frame="4"] .shoe3 { --x: -60px; }
-    .shoe-carousel[data-frame="4"] .shoe5 { --x: 60px; }
-
-    .shoe-carousel[data-frame="5"] .shoe1 { --x: -240px; }
-    .shoe-carousel[data-frame="5"] .shoe2 { --x: -180px; }
-    .shoe-carousel[data-frame="5"] .shoe3 { --x: -120px; }
-    .shoe-carousel[data-frame="5"] .shoe4 { --x: -60px; }
 }
 
 @media (max-width: 480px) {
@@ -1100,7 +969,7 @@ body {
     }
 
     .hero-text-block {
-        margin-bottom: 15px;
+        margin-bottom: 25px;
         padding-top: 15px;
         flex-shrink: 0;
     }
@@ -1119,13 +988,13 @@ body {
 
     .sub-heading {
         font-size: clamp(12px, 3vw, 14px);
-        margin: 8px auto 20px;
+        margin: 8px auto 35px;
         max-width: 95%;
         line-height: 1.4;
     }
 
     .shoe-scroll-track {
-        margin: 0;
+        margin: 15px 0 0 0;
         flex: 1;
         min-height: 350px;
         display: flex;
@@ -1202,36 +1071,4 @@ body {
         border-radius: 50%;
         background: currentColor;
     }
-}
-
-    /* Adjust frame positions for mobile */
-    .shoe-carousel[data-frame="1"] .shoe1 { --scale: 1.0; --x: 0px; }
-    .shoe-carousel[data-frame="1"] .shoe2 { --x: 70px; --scale: 0.8; }
-    .shoe-carousel[data-frame="1"] .shoe3 { --x: 140px; --scale: 0.65; }
-    .shoe-carousel[data-frame="1"] .shoe4 { --x: 210px; --scale: 0.5; }
-    .shoe-carousel[data-frame="1"] .shoe5 { --x: 280px; --scale: 0.4; }
-
-    .shoe-carousel[data-frame="2"] .shoe1 { --x: -70px; --scale: 0.8; }
-    .shoe-carousel[data-frame="2"] .shoe2 { --scale: 1.0; --x: 0px; }
-    .shoe-carousel[data-frame="2"] .shoe3 { --x: 70px; --scale: 0.8; }
-    .shoe-carousel[data-frame="2"] .shoe4 { --x: 140px; --scale: 0.65; }
-    .shoe-carousel[data-frame="2"] .shoe5 { --x: 210px; --scale: 0.5; }
-
-    .shoe-carousel[data-frame="3"] .shoe1 { --x: -140px; --scale: 0.65; }
-    .shoe-carousel[data-frame="3"] .shoe2 { --x: -70px; --scale: 0.8; }
-    .shoe-carousel[data-frame="3"] .shoe3 { --scale: 1.0; --x: 0px; }
-    .shoe-carousel[data-frame="3"] .shoe4 { --x: 70px; --scale: 0.8; }
-    .shoe-carousel[data-frame="3"] .shoe5 { --x: 140px; --scale: 0.65; }
-
-    .shoe-carousel[data-frame="4"] .shoe1 { --x: -210px; --scale: 0.5; }
-    .shoe-carousel[data-frame="4"] .shoe2 { --x: -140px; --scale: 0.65; }
-    .shoe-carousel[data-frame="4"] .shoe3 { --x: -70px; --scale: 0.8; }
-    .shoe-carousel[data-frame="4"] .shoe4 { --scale: 1.0; --x: 0px; }
-    .shoe-carousel[data-frame="4"] .shoe5 { --x: 70px; --scale: 0.8; }
-
-    .shoe-carousel[data-frame="5"] .shoe1 { --x: -280px; --scale: 0.4; }
-    .shoe-carousel[data-frame="5"] .shoe2 { --x: -210px; --scale: 0.5; }
-    .shoe-carousel[data-frame="5"] .shoe3 { --x: -140px; --scale: 0.65; }
-    .shoe-carousel[data-frame="5"] .shoe4 { --x: -70px; --scale: 0.8; }
-    .shoe-carousel[data-frame="5"] .shoe5 { --scale: 1.0; --x: 0px; }
 }

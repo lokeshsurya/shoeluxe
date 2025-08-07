@@ -8,6 +8,19 @@
 body {
     font-family: 'Arial', sans-serif;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Improve performance on mobile */
+@media (max-width: 768px) {
+    * {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
 }
 
 /* Hero Section */
@@ -82,10 +95,12 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     position: relative;
-    gap: 0.5rem;
+    gap: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 /* Add subtle backdrop for text readability */
@@ -110,6 +125,8 @@ body {
     text-align: center;
     margin-bottom: 20px;
     animation: fadeInUp 1s ease-out;
+    flex-shrink: 0;
+    width: 100%;
 }
 
 /* Brand Label */
@@ -204,6 +221,8 @@ body {
     justify-content: center;
     margin: 0;
     animation: fadeInUp 1s ease-out 0.6s both;
+    min-height: 0;
+    overflow: visible;
 }
 
 /* Shoe Carousel */
@@ -251,6 +270,10 @@ body {
     flex-shrink: 0;
     overflow: visible;
     perspective: 1000px;
+    transform: translateX(var(--x, 0px)) translateY(var(--y, 0px)) scale(var(--scale, 1));
+    opacity: var(--opacity, 1);
+    z-index: var(--z-index, 1);
+    transition: all 600ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Base shoe image styles */
@@ -425,25 +448,54 @@ body {
     transition: all 400ms ease-in-out;
 }
 
-/* Mobile responsiveness */
+/* Enhanced mobile touch interactions */
+@media (hover: none) and (pointer: coarse) {
+    .shoe-container.center-shoe:active {
+        transform: scale(1.15) translateY(-20px) !important;
+        transition: transform 0.1s ease;
+    }
+
+    .shop-now-btn:active {
+        transform: translateX(-50%) translateY(-10px) scale(0.95);
+    }
+
+    .scroll-btn:active {
+        transform: scale(0.9);
+    }
+
+    .explore-collection-btn:active {
+        transform: scale(0.95);
+    }
+}
+
+/* Prevent horizontal scroll on mobile */
 @media (max-width: 768px) {
+    body {
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .hero-section {
+        min-height: 100vh;
+        min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
+    }
+
+    /* Improve carousel overflow handling */
     .shoe-carousel {
-        overflow-x: auto;
-        overflow-y: visible;
-        gap: 20px;
-        padding: 0 20px;
-        justify-content: flex-start;
+        overflow: visible;
+        -webkit-overflow-scrolling: touch;
     }
 
     .shoe-container {
-        width: 180px;
         flex-shrink: 0;
+        -webkit-transform: translateZ(0); /* Hardware acceleration */
+        transform: translateZ(0);
     }
 
-    .shoe1, .shoe2, .shoe3, .shoe4, .shoe5 {
-        --y: 0px;
-        --scale: 1;
-        --z-index: 1;
+    /* Better touch targets */
+    .scroll-btn, .indicator {
+        -webkit-tap-highlight-color: transparent;
+        touch-action: manipulation;
     }
 }
 
@@ -816,111 +868,71 @@ body {
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    .hero-section {
+        background-size: 200px 200px;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
     .hero-content {
-        padding: 0 15px;
-        max-width: 90vw;
+        padding: 30px 20px 20px;
+        max-width: 95vw;
+        gap: 1.5rem;
+        justify-content: flex-start;
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    .hero-text-block {
+        margin-bottom: 20px;
+        padding-top: 20px;
+        flex-shrink: 0;
+    }
+
+    .brand-label {
+        font-size: 10px;
+        letter-spacing: 2px;
+        margin-bottom: 12px;
+    }
+
+    .main-heading {
+        font-size: clamp(28px, 7vw, 48px);
+        margin-bottom: 10px;
+        line-height: 1.2;
+    }
+
+    .sub-heading {
+        font-size: clamp(14px, 3.5vw, 16px);
+        margin: 10px auto 25px;
+        max-width: 90%;
+        line-height: 1.4;
     }
 
     .shoe-scroll-track {
-        margin: 1.5rem 0;
+        margin: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 400px;
     }
 
     .shoe-carousel {
         height: 280px;
+        padding: 0 10px;
+        margin: 20px 0;
+    }
+
+    .shoe-container {
+        width: 160px;
+        height: 220px;
+        margin: 0 10px;
     }
 
     .shoe-image {
-        width: 240px;
-        height: 180px;
-    }
-
-    .shoe3 .shoe-image {
-        width: 280px;
-        height: 210px;
-    }
-
-    .shop-now-btn {
-        font-size: 1rem;
-        padding: 12px 24px;
-        bottom: -40px;
-        border-radius: 25px;
-    }
-
-    /* Adjust frame positions for tablet */
-    .shoe-carousel[data-frame="1"] .shoe1 { --scale: 1.0; }
-    .shoe-carousel[data-frame="1"] .shoe2 { --x: 120px; --scale: 0.8; }
-    .shoe-carousel[data-frame="1"] .shoe3 { --x: 240px; --scale: 0.65; }
-    .shoe-carousel[data-frame="1"] .shoe4 { --x: 360px; --scale: 0.6; }
-    .shoe-carousel[data-frame="1"] .shoe5 { --x: 480px; --scale: 0.6; }
-
-    .shoe-carousel[data-frame="2"] .shoe1 { --x: -120px; --scale: 0.8; }
-    .shoe-carousel[data-frame="2"] .shoe2 { --scale: 1.0; }
-    .shoe-carousel[data-frame="2"] .shoe3 { --x: 120px; --scale: 0.8; }
-    .shoe-carousel[data-frame="2"] .shoe4 { --x: 240px; --scale: 0.65; }
-    .shoe-carousel[data-frame="2"] .shoe5 { --x: 360px; --scale: 0.6; }
-
-    .shoe-carousel[data-frame="3"] .shoe1 { --x: -240px; --scale: 0.65; }
-    .shoe-carousel[data-frame="3"] .shoe2 { --x: -120px; --scale: 0.8; }
-    .shoe-carousel[data-frame="3"] .shoe3 { --scale: 1.0; }
-    .shoe-carousel[data-frame="3"] .shoe4 { --x: 120px; --scale: 0.8; }
-    .shoe-carousel[data-frame="3"] .shoe5 { --x: 240px; --scale: 0.65; }
-
-    .shoe-carousel[data-frame="4"] .shoe1 { --x: -360px; --scale: 0.6; }
-    .shoe-carousel[data-frame="4"] .shoe2 { --x: -240px; --scale: 0.65; }
-    .shoe-carousel[data-frame="4"] .shoe3 { --x: -120px; --scale: 0.8; }
-    .shoe-carousel[data-frame="4"] .shoe4 { --scale: 1.0; }
-    .shoe-carousel[data-frame="4"] .shoe5 { --x: 120px; --scale: 0.8; }
-
-    .shoe-carousel[data-frame="5"] .shoe1 { --x: -480px; --scale: 0.6; }
-    .shoe-carousel[data-frame="5"] .shoe2 { --x: -360px; --scale: 0.6; }
-    .shoe-carousel[data-frame="5"] .shoe3 { --x: -240px; --scale: 0.65; }
-    .shoe-carousel[data-frame="5"] .shoe4 { --x: -120px; --scale: 0.8; }
-    .shoe-carousel[data-frame="5"] .shoe5 { --scale: 1.0; }
-
-    .hero-cta {
-        padding: 1rem 2.5rem;
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-content {
-        padding: 0 20px;
-        gap: 0.3rem;
-    }
-
-    .hero-title {
-        margin-bottom: 0.2rem;
-        font-size: clamp(1.5rem, 5vw, 2rem);
-    }
-
-    .hero-subtitle {
-        margin-bottom: 0.3rem;
-        font-size: clamp(0.8rem, 2vw, 1rem);
-    }
-
-    .hero-subtitle::after {
-        width: 40px;
-        margin-top: 0.4rem;
-    }
-}
-
-    .shoe-scroll-track {
-        margin: 1rem 0;
-    }
-
-    .shoe-carousel {
-        height: 200px;
-    }
-
-    .shoe-image {
-        width: 200px;
-        height: 150px;
-    }
-
-    .shoe3 .shoe-image {
-        width: 240px;
-        height: 180px;
+        width: 100%;
+        height: 100%;
     }
 
     .shop-now-btn {
@@ -928,39 +940,224 @@ body {
         padding: 10px 20px;
         bottom: -35px;
         border-radius: 20px;
-        letter-spacing: 0.3px;
     }
 
-    /* Adjust frame positions for mobile */
-    .shoe-carousel[data-frame="1"] .shoe1 { --scale: 0.9; }
-    .shoe-carousel[data-frame="1"] .shoe2 { --x: 80px; --scale: 0.75; }
-    .shoe-carousel[data-frame="1"] .shoe3 { --x: 160px; --scale: 0.6; }
-    .shoe-carousel[data-frame="1"] .shoe4 { --x: 240px; --scale: 0.5; }
-    .shoe-carousel[data-frame="1"] .shoe5 { --x: 320px; --scale: 0.5; }
+    .scroll-controls {
+        gap: 1.5rem;
+        margin-top: 30px;
+        flex-shrink: 0;
+    }
 
-    .shoe-carousel[data-frame="2"] .shoe1 { --x: -80px; --scale: 0.75; }
-    .shoe-carousel[data-frame="2"] .shoe2 { --scale: 0.9; }
-    .shoe-carousel[data-frame="2"] .shoe3 { --x: 80px; --scale: 0.75; }
-    .shoe-carousel[data-frame="2"] .shoe4 { --x: 160px; --scale: 0.6; }
-    .shoe-carousel[data-frame="2"] .shoe5 { --x: 240px; --scale: 0.5; }
+    .scroll-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
 
-    .shoe-carousel[data-frame="3"] .shoe1 { --x: -160px; --scale: 0.6; }
-    .shoe-carousel[data-frame="3"] .shoe2 { --x: -80px; --scale: 0.75; }
-    .shoe-carousel[data-frame="3"] .shoe3 { --scale: 0.9; }
-    .shoe-carousel[data-frame="3"] .shoe4 { --x: 80px; --scale: 0.75; }
-    .shoe-carousel[data-frame="3"] .shoe5 { --x: 160px; --scale: 0.6; }
+    .indicator {
+        width: 10px;
+        height: 10px;
+    }
 
-    .shoe-carousel[data-frame="4"] .shoe1 { --x: -240px; --scale: 0.5; }
-    .shoe-carousel[data-frame="4"] .shoe2 { --x: -160px; --scale: 0.6; }
-    .shoe-carousel[data-frame="4"] .shoe3 { --x: -80px; --scale: 0.75; }
-    .shoe-carousel[data-frame="4"] .shoe4 { --scale: 0.9; }
-    .shoe-carousel[data-frame="4"] .shoe5 { --x: 80px; --scale: 0.75; }
+    .explore-collection-btn {
+        font-size: 16px;
+        padding: 12px 28px;
+    }
 
-    .shoe-carousel[data-frame="5"] .shoe1 { --x: -320px; --scale: 0.5; }
-    .shoe-carousel[data-frame="5"] .shoe2 { --x: -240px; --scale: 0.5; }
-    .shoe-carousel[data-frame="5"] .shoe3 { --x: -160px; --scale: 0.6; }
-    .shoe-carousel[data-frame="5"] .shoe4 { --x: -80px; --scale: 0.75; }
-    .shoe-carousel[data-frame="5"] .shoe5 { --scale: 0.9; }
+    .explore-button-container {
+        margin-top: 25px;
+        flex-shrink: 0;
+    }
+
+    /* Adjust frame positions for tablet */
+    .shoe-carousel[data-frame="1"] .shoe1 { --scale: 1.1; --x: 0px; }
+    .shoe-carousel[data-frame="1"] .shoe2 { --x: 100px; --scale: 0.85; }
+    .shoe-carousel[data-frame="1"] .shoe3 { --x: 200px; --scale: 0.7; }
+    .shoe-carousel[data-frame="1"] .shoe4 { --x: 300px; --scale: 0.6; }
+    .shoe-carousel[data-frame="1"] .shoe5 { --x: 400px; --scale: 0.5; }
+
+    .shoe-carousel[data-frame="2"] .shoe1 { --x: -100px; --scale: 0.85; }
+    .shoe-carousel[data-frame="2"] .shoe2 { --scale: 1.1; --x: 0px; }
+    .shoe-carousel[data-frame="2"] .shoe3 { --x: 100px; --scale: 0.85; }
+    .shoe-carousel[data-frame="2"] .shoe4 { --x: 200px; --scale: 0.7; }
+    .shoe-carousel[data-frame="2"] .shoe5 { --x: 300px; --scale: 0.6; }
+
+    .shoe-carousel[data-frame="3"] .shoe1 { --x: -200px; --scale: 0.7; }
+    .shoe-carousel[data-frame="3"] .shoe2 { --x: -100px; --scale: 0.85; }
+    .shoe-carousel[data-frame="3"] .shoe3 { --scale: 1.1; --x: 0px; }
+    .shoe-carousel[data-frame="3"] .shoe4 { --x: 100px; --scale: 0.85; }
+    .shoe-carousel[data-frame="3"] .shoe5 { --x: 200px; --scale: 0.7; }
+
+    .shoe-carousel[data-frame="4"] .shoe1 { --x: -300px; --scale: 0.6; }
+    .shoe-carousel[data-frame="4"] .shoe2 { --x: -200px; --scale: 0.7; }
+    .shoe-carousel[data-frame="4"] .shoe3 { --x: -100px; --scale: 0.85; }
+    .shoe-carousel[data-frame="4"] .shoe4 { --scale: 1.1; --x: 0px; }
+    .shoe-carousel[data-frame="4"] .shoe5 { --x: 100px; --scale: 0.85; }
+
+    .shoe-carousel[data-frame="5"] .shoe1 { --x: -400px; --scale: 0.5; }
+    .shoe-carousel[data-frame="5"] .shoe2 { --x: -300px; --scale: 0.6; }
+    .shoe-carousel[data-frame="5"] .shoe3 { --x: -200px; --scale: 0.7; }
+    .shoe-carousel[data-frame="5"] .shoe4 { --x: -100px; --scale: 0.85; }
+    .shoe-carousel[data-frame="5"] .shoe5 { --scale: 1.1; --x: 0px; }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+    .hero-content {
+        padding: 20px 10px 10px;
+        gap: 0.8rem;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    .hero-text-block {
+        padding-top: 10px;
+        margin-bottom: 12px;
+    }
+
+    .main-heading {
+        font-size: clamp(20px, 5.5vw, 32px);
+        margin-bottom: 6px;
+    }
+
+    .sub-heading {
+        font-size: clamp(11px, 2.8vw, 13px);
+        margin: 6px auto 15px;
+    }
+
+    .shoe-scroll-track {
+        min-height: 300px;
+    }
+
+    .shoe-container {
+        width: 120px;
+        height: 160px;
+        margin: 0 6px;
+    }
+
+    .shoe-carousel {
+        height: 200px;
+        margin: 10px 0;
+    }
+
+    .scroll-controls {
+        gap: 0.8rem;
+        margin-top: 20px;
+    }
+
+    .explore-collection-btn {
+        font-size: 13px;
+        padding: 9px 20px;
+    }
+
+    .explore-button-container {
+        margin-top: 15px;
+    }
+
+    /* Adjust frame positions for extra small screens */
+    .shoe-carousel[data-frame="1"] .shoe2 { --x: 60px; }
+    .shoe-carousel[data-frame="1"] .shoe3 { --x: 120px; }
+    .shoe-carousel[data-frame="1"] .shoe4 { --x: 180px; }
+    .shoe-carousel[data-frame="1"] .shoe5 { --x: 240px; }
+
+    .shoe-carousel[data-frame="2"] .shoe1 { --x: -60px; }
+    .shoe-carousel[data-frame="2"] .shoe3 { --x: 60px; }
+    .shoe-carousel[data-frame="2"] .shoe4 { --x: 120px; }
+    .shoe-carousel[data-frame="2"] .shoe5 { --x: 180px; }
+
+    .shoe-carousel[data-frame="3"] .shoe1 { --x: -120px; }
+    .shoe-carousel[data-frame="3"] .shoe2 { --x: -60px; }
+    .shoe-carousel[data-frame="3"] .shoe4 { --x: 60px; }
+    .shoe-carousel[data-frame="3"] .shoe5 { --x: 120px; }
+
+    .shoe-carousel[data-frame="4"] .shoe1 { --x: -180px; }
+    .shoe-carousel[data-frame="4"] .shoe2 { --x: -120px; }
+    .shoe-carousel[data-frame="4"] .shoe3 { --x: -60px; }
+    .shoe-carousel[data-frame="4"] .shoe5 { --x: 60px; }
+
+    .shoe-carousel[data-frame="5"] .shoe1 { --x: -240px; }
+    .shoe-carousel[data-frame="5"] .shoe2 { --x: -180px; }
+    .shoe-carousel[data-frame="5"] .shoe3 { --x: -120px; }
+    .shoe-carousel[data-frame="5"] .shoe4 { --x: -60px; }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        background-size: 150px 150px;
+        padding: 0;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    .hero-content {
+        padding: 25px 15px 15px;
+        gap: 1rem;
+        max-width: 100vw;
+        justify-content: flex-start;
+        height: auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    .hero-text-block {
+        margin-bottom: 15px;
+        padding-top: 15px;
+        flex-shrink: 0;
+    }
+
+    .brand-label {
+        font-size: 9px;
+        letter-spacing: 1.5px;
+        margin-bottom: 8px;
+    }
+
+    .main-heading {
+        font-size: clamp(24px, 6vw, 36px);
+        margin-bottom: 8px;
+        line-height: 1.1;
+    }
+
+    .sub-heading {
+        font-size: clamp(12px, 3vw, 14px);
+        margin: 8px auto 20px;
+        max-width: 95%;
+        line-height: 1.4;
+    }
+
+    .shoe-scroll-track {
+        margin: 0;
+        flex: 1;
+        min-height: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .shoe-carousel {
+        height: 220px;
+        padding: 0 5px;
+        margin: 15px 0;
+    }
+
+    .shoe-container {
+        width: 140px;
+        height: 180px;
+        margin: 0 8px;
+    }
+
+    .shop-now-btn {
+        font-size: 0.8rem;
+        padding: 8px 16px;
+        bottom: -30px;
+        border-radius: 18px;
+        letter-spacing: 0.2px;
+    }
+
+    .scroll-controls {
+        gap: 1rem;
+        margin-top: 25px;
+        flex-shrink: 0;
+    }
 
     .scroll-btn {
         width: 35px;
@@ -969,13 +1166,72 @@ body {
     }
 
     .indicator {
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
     }
 
-    .hero-cta {
-        padding: 0.9rem 2rem;
-        font-size: 1rem;
-        margin-top: 0.5rem;
+    .explore-collection-btn {
+        font-size: 14px;
+        padding: 10px 24px;
     }
+
+    .explore-button-container {
+        margin-top: 20px;
+        flex-shrink: 0;
+    }
+
+    /* Improve touch targets */
+    .scroll-btn, .indicator, .shop-now-btn, .explore-collection-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .indicator {
+        min-width: 20px;
+        min-height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .indicator::after {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: currentColor;
+    }
+}
+
+    /* Adjust frame positions for mobile */
+    .shoe-carousel[data-frame="1"] .shoe1 { --scale: 1.0; --x: 0px; }
+    .shoe-carousel[data-frame="1"] .shoe2 { --x: 70px; --scale: 0.8; }
+    .shoe-carousel[data-frame="1"] .shoe3 { --x: 140px; --scale: 0.65; }
+    .shoe-carousel[data-frame="1"] .shoe4 { --x: 210px; --scale: 0.5; }
+    .shoe-carousel[data-frame="1"] .shoe5 { --x: 280px; --scale: 0.4; }
+
+    .shoe-carousel[data-frame="2"] .shoe1 { --x: -70px; --scale: 0.8; }
+    .shoe-carousel[data-frame="2"] .shoe2 { --scale: 1.0; --x: 0px; }
+    .shoe-carousel[data-frame="2"] .shoe3 { --x: 70px; --scale: 0.8; }
+    .shoe-carousel[data-frame="2"] .shoe4 { --x: 140px; --scale: 0.65; }
+    .shoe-carousel[data-frame="2"] .shoe5 { --x: 210px; --scale: 0.5; }
+
+    .shoe-carousel[data-frame="3"] .shoe1 { --x: -140px; --scale: 0.65; }
+    .shoe-carousel[data-frame="3"] .shoe2 { --x: -70px; --scale: 0.8; }
+    .shoe-carousel[data-frame="3"] .shoe3 { --scale: 1.0; --x: 0px; }
+    .shoe-carousel[data-frame="3"] .shoe4 { --x: 70px; --scale: 0.8; }
+    .shoe-carousel[data-frame="3"] .shoe5 { --x: 140px; --scale: 0.65; }
+
+    .shoe-carousel[data-frame="4"] .shoe1 { --x: -210px; --scale: 0.5; }
+    .shoe-carousel[data-frame="4"] .shoe2 { --x: -140px; --scale: 0.65; }
+    .shoe-carousel[data-frame="4"] .shoe3 { --x: -70px; --scale: 0.8; }
+    .shoe-carousel[data-frame="4"] .shoe4 { --scale: 1.0; --x: 0px; }
+    .shoe-carousel[data-frame="4"] .shoe5 { --x: 70px; --scale: 0.8; }
+
+    .shoe-carousel[data-frame="5"] .shoe1 { --x: -280px; --scale: 0.4; }
+    .shoe-carousel[data-frame="5"] .shoe2 { --x: -210px; --scale: 0.5; }
+    .shoe-carousel[data-frame="5"] .shoe3 { --x: -140px; --scale: 0.65; }
+    .shoe-carousel[data-frame="5"] .shoe4 { --x: -70px; --scale: 0.8; }
+    .shoe-carousel[data-frame="5"] .shoe5 { --scale: 1.0; --x: 0px; }
 }

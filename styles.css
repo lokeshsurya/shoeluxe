@@ -731,8 +731,6 @@ body {
             contrast(1.1) 
             saturate(1.1);
     background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-    padding: 15px;
-    object-fit: contain !important;
     transform: translateZ(0);
     transition: all 0.3s ease;
 }
@@ -763,8 +761,6 @@ body {
             contrast(1.1) 
             saturate(1.1);
     background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-    padding: 15px;
-    object-fit: contain !important;
     transform: translateZ(0);
     transition: all 0.3s ease;
 }
@@ -780,6 +776,66 @@ body {
 
 /* Enhanced shadow for center New Balance shoe */
 .shoe-container.center-shoe .shoe-image[src*="NEW+BALANCE"] {
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4)) 
+            drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3))
+            brightness(1.1) 
+            contrast(1.2) 
+            saturate(1.2);
+}
+
+/* Puma image enhancements to match Nike quality */
+.shoe-image[src*="PUMA"] {
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3)) 
+            drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2))
+            brightness(1.05) 
+            contrast(1.1) 
+            saturate(1.1);
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    transform: translateZ(0) scale(0.75);
+    transition: all 0.3s ease;
+}
+
+.shoe-image[src*="PUMA"]:hover {
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4)) 
+            drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3))
+            brightness(1.08) 
+            contrast(1.15) 
+            saturate(1.15);
+    transform: translateZ(0) scale(1.02);
+}
+
+/* Enhanced shadow for center Puma shoe */
+.shoe-container.center-shoe .shoe-image[src*="PUMA"] {
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4)) 
+            drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3))
+            brightness(1.1) 
+            contrast(1.2) 
+            saturate(1.2);
+}
+
+/* Reebok image enhancements to match Nike quality */
+.shoe-image[src*="REEBOK"] {
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.3)) 
+            drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2))
+            brightness(1.05) 
+            contrast(1.1) 
+            saturate(1.1);
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    transform: translateZ(0);
+    transition: all 0.3s ease;
+}
+
+.shoe-image[src*="REEBOK"]:hover {
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.4)) 
+            drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3))
+            brightness(1.08) 
+            contrast(1.15) 
+            saturate(1.15);
+    transform: translateZ(0) scale(1.02);
+}
+
+/* Enhanced shadow for center Reebok shoe */
+.shoe-container.center-shoe .shoe-image[src*="REEBOK"] {
     filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.4)) 
             drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3))
             brightness(1.1) 
